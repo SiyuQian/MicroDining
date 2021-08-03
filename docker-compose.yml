@@ -1,0 +1,20 @@
+version: '3'
+services:
+    node-micro:
+        image: web
+        build:
+            context: ./web
+            dockerfile: Dockerfile
+            # args:
+                # init: 1
+        container_name: moleculer-js
+        volumes:
+            - ./tmp/npm:/root/.npm
+            - ./web/src:/usr/src/app/src
+        ports:
+            - 80:80
+            - 3030:3030
+        environment:
+            - PORT=80
+            - NODE_ENV=development
+        #  - DBHOST=mongodb://db:27017
